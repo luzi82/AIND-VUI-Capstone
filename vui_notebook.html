@@ -16999,6 +16999,11 @@ AABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 1:</strong> Use the plot above to analyze the performance of each of the attempted architectures.  Which performs best?  Provide an explanation regarding why you think some models perform better than others.</p>
 <p><strong>Answer:</strong> model_5 performs best.  It achieve the lowest Validation Loss in epoch=10.  However, its loss rate increase afterward since of overfitting.  If the epoch increase, model_3 may perform better.</p>
+<p>model_0 is the worst, since it does not contains TimeDistributed Dense layer, which help to detect complex pattern.</p>
+<p>model_2 perform better than model_1.  CNN can help to detect similar pattern in different pitch.</p>
+<p>model_3 perform better than model_1.  Double RNN can help to detect higer level features among time.</p>
+<p>model_4 perform better than model_1.  Information from future can help to classify the current voice.</p>
+<p>model_5 combine model_2 and model_4.  It perform well at the beginning but later have the overfit problem.</p>
 
 </div>
 </div>
@@ -17196,10 +17201,10 @@ Epoch 20/20
 </ol>
 <p><em>Reasons:</em></p>
 <ul>
-<li>2 Bidirectional RNN:  Bidirectional layer is choosen since model 4 perform better than model 1.  2 layers is choosen since model 3 is better than model 1.</li>
-<li>CNN:  CNN is used since it reduce the loss greatly at the beginning of train.</li>
+<li>2 Bidirectional RNN:  Bidirectional layer is choosen since bidirectional layer is better than single RNN, as model 4 perform better than model 1.  2 layers is choosen since double RNN is better than single RNN, as model 3 is better than model 1.</li>
+<li>CNN:  CNN is used since it reduce the loss greatly at the beginning of train at model 2 and 5.</li>
 <li>Dropout:  Overfitting occur when CNN exist, so dropout is used to reduce overfitting.</li>
-<li>Time distributed dense:  It is used since model 1 is far better than model 0.</li>
+<li>Time distributed dense:  It is used since it can greatly reduce loss, as model 1 is far better than model 0.</li>
 </ul>
 
 </div>
